@@ -1,7 +1,9 @@
 package ideall.gabrielrunescape.com.br.view;
 
 import android.os.Bundle;
+import android.view.Menu;
 import ideall.gabrielrunescape.com.br.R;
+import android.support.v7.widget.Toolbar;
 import android.support.v7.app.AppCompatActivity;
 
 
@@ -21,5 +23,14 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
 }

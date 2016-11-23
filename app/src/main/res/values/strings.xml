@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">IdeALL</string>
+
+    <!-- menu_main.xml -->
+    <string name="toolbar_more">Mais</string>
+    <string name="toolbar_conf">Preferências</string>
 </resources>

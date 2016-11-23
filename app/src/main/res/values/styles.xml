@@ -4,4 +4,8 @@
         <item name="colorAccent">@color/coluorAccent</item>
         <item name="colorPrimaryDark">@color/coluorPrimaryDark</item>
     </style>
+
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textColor">@color/coluorIcons</item>
+    </style>
 </resources>
