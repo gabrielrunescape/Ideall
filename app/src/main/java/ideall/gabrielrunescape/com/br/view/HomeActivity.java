@@ -1,10 +1,13 @@
 package ideall.gabrielrunescape.com.br.view;
 
-import android.os.Bundle;
+import android.view.View;
 import android.view.Menu;
+import android.os.Bundle;
+import android.content.Intent;
 import ideall.gabrielrunescape.com.br.R;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.design.widget.FloatingActionButton;
 
 
 /**
@@ -14,18 +17,32 @@ import android.support.v7.app.AppCompatActivity;
  * a tela inicial.
  */
 public class HomeActivity extends AppCompatActivity {
+    private FloatingActionButton btnAdd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        btnAdd = (FloatingActionButton) findViewById(R.id.btnAdd);
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent itent = new Intent(getApplicationContext(), EditActivity.class);
+
+                startActivity(itent);
+                finish();
+            }
+        });
     }
 
     @Override
