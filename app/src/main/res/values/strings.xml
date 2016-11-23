@@ -4,4 +4,8 @@
     <!-- menu_main.xml -->
     <string name="toolbar_more">Mais</string>
     <string name="toolbar_conf">Preferências</string>
+
+    <!-- activity_edit.xml -->
+    <string name="project_name">Nome do projeto</string>
+    <string name="project_author">Feito por</string>
 </resources>

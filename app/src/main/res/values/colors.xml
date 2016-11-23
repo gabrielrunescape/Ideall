@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="coluorIcons">#FFFFFF</color>
-    <color name="coluorAccent">#199DFF</color>
+    <color name="coluorAccent">#FF9900</color>
     <color name="coluorPrimary">#0092FF</color>
     <color name="colourDivider">#BDBDBD</color>
     <color name="colourPrimaryText">#FFFFFF</color>
