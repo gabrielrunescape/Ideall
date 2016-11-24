@@ -14,6 +14,7 @@ import ideall.gabrielrunescape.com.br.R;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.app.AppCompatActivity;
 import ideall.gabrielrunescape.com.br.DAO.ProjectDAO;
+import ideall.gabrielrunescape.com.br.models.ProjectAdapter;
 import ideall.gabrielrunescape.com.br.objects.Project;
 import android.support.design.widget.FloatingActionButton;
 
@@ -56,8 +57,8 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        List<Project> projects = new ArrayList<Project>();
-        ArrayAdapter<Project> adapter = new ArrayAdapter<Project>(this, android.R.layout.simple_list_item_1, projects);
+        List<Project> projects = dao.getAll();
+        ProjectAdapter adapter = new ProjectAdapter(this, projects);
 
         ListView lista = (ListView) findViewById(R.id.listView);
         lista.setAdapter(adapter);

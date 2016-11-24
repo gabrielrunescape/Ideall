@@ -6,4 +6,6 @@
     <color name="colourDivider">#BDBDBD</color>
     <color name="colourPrimaryText">#FFFFFF</color>
     <color name="coluorPrimaryDark">#1976D2</color>
+    <color name="colourListMenuText">#00000F</color>
+    <color name="colourDescMenuText">#383838</color>
 </resources>
