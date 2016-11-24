@@ -1,12 +1,14 @@
 package ideall.gabrielrunescape.com.br.objects;
 
+import java.io.Serializable;
+
 /**
  *      Criado por GabrielRuneScape <gabrielfilipe@mail.ru> em 23/11/2016
  *
  *      Objeto para armazenamento dos projetos antes de transmitir ao banco de dados através da
  * classe CustomSQLiteOpenHelper.
  */
-public class Project {
+public class Project implements Serializable {
     private long ID;
     private String name;
     private String author;

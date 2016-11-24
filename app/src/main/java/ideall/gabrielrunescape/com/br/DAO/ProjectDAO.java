@@ -53,6 +53,16 @@ public class ProjectDAO {
         return project;
     }
 
+    public void update(Project proj) {
+        long id = proj.getID();
+
+        ContentValues values = new ContentValues();
+        values.put(CustomSQLiteOpenHelper.COLUMN_NAME, proj.getName());
+        values.put(CustomSQLiteOpenHelper.COLUMN_AUTHOR, proj.getAuthor());
+
+        database.update(CustomSQLiteOpenHelper.TABLE, values, CustomSQLiteOpenHelper.COLUNM_ID + " = " + id, null);
+    }
+
     public void delete(Project proj) {
         long id = proj.getID();
 

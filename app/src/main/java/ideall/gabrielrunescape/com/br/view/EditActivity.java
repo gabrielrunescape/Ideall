@@ -2,6 +2,7 @@ package ideall.gabrielrunescape.com.br.view;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 import android.content.Intent;
 import android.widget.EditText;
 import ideall.gabrielrunescape.com.br.R;
@@ -9,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import ideall.gabrielrunescape.com.br.DAO.ProjectDAO;
 import ideall.gabrielrunescape.com.br.objects.Project;
 import android.support.design.widget.FloatingActionButton;
-import android.widget.Toast;
 
 public class EditActivity extends AppCompatActivity {
     private EditText etBy;
@@ -31,6 +31,8 @@ public class EditActivity extends AppCompatActivity {
     protected void onResume() {
         project.open();
         super.onResume();
+
+        final Intent intent = getIntent();
 
         etBy = (EditText) findViewById(R.id.etBy);
         etName = (EditText) findViewById(R.id.etName);
@@ -61,7 +63,12 @@ public class EditActivity extends AppCompatActivity {
                     p.setName(n);
                     p.setAuthor(b);
 
-                    project.create(p);
+                    if (intent.getSerializableExtra("Project") == null) {
+                        project.create(p);
+                    } else {
+                        p.setID(((Project) intent.getSerializableExtra("Project")).getID());
+                        project.update(p);
+                    }
 
                     Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
 
@@ -70,6 +77,13 @@ public class EditActivity extends AppCompatActivity {
                 }
             }
         });
+
+        if (intent.getSerializableExtra("Project") != null) {
+            Project p = (Project) intent.getSerializableExtra("Project");
+
+            etBy.setText(p.getAuthor());
+            etName.setText(p.getName());
+        }
     }
 
     @Override

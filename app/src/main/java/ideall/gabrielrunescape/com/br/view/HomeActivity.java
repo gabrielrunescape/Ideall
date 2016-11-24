@@ -5,11 +5,10 @@ import java.util.List;
 import android.view.View;
 import android.view.Menu;
 import android.os.Bundle;
-import java.util.ArrayList;
 import android.view.MenuItem;
 import android.content.Intent;
 import android.widget.ListView;
-import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 import ideall.gabrielrunescape.com.br.R;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.app.AppCompatActivity;
@@ -57,12 +56,23 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        List<Project> projects = dao.getAll();
+        final List<Project> projects = dao.getAll();
         ProjectAdapter adapter = new ProjectAdapter(this, projects);
 
         ListView lista = (ListView) findViewById(R.id.listView);
         lista.setAdapter(adapter);
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), EditActivity.class);
 
+                Project p = projects.get(position);
+                intent.putExtra("Project", p);
+
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     @Override
