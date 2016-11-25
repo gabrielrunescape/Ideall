@@ -6,6 +6,7 @@
     <string name="toolbar_conf">Preferências</string>
 
     <!-- activity_edit.xml -->
+    <string name="new_project">Novo projeto</string>
     <string name="project_name">Nome do projeto</string>
     <string name="project_author">Feito por</string>
 </resources>

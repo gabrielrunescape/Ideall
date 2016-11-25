@@ -1,11 +1,10 @@
 <resources>
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/coluorPrimary</item>
-        <item name="colorAccent">@color/coluorAccent</item>
-        <item name="colorPrimaryDark">@color/coluorPrimaryDark</item>
-    </style>
-
-    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
-        <item name="android:textColor">@color/coluorIcons</item>
+        <item name="colorAccent">@color/colourAccent</item>
+        <item name="colorPrimary">@color/colourPrimary</item>
+        <item name="colorPrimaryDark">@color/colourPrimaryDark</item>
+        <item name="android:colorBackground">@color/colourBackground</item>
+        <item name="android:colorButtonNormal">@color/colourAccent</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
     </style>
 </resources>

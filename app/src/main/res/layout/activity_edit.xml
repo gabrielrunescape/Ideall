@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="ideall.gabrielrunescape.com.br.view.EditActivity"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_edit"
@@ -9,66 +8,46 @@
     android:orientation="vertical"
     android:weightSum="1">
 
-    <FrameLayout
-        android:layout_height="180dp"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_edit"
         android:layout_width="match_parent"
-        tools:ignore="UselessParent">
+        android:layout_height="wrap_content"
+        android:theme="?attr/actionBarTheme"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"/>
 
-        <android.support.design.widget.FloatingActionButton
-            app:fabSize="mini"
-            android:clickable="true"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_marginRight="112dp"
-            android:layout_marginBottom="8dp"
-            android:layout_gravity="end|bottom"
-            app:srcCompat="@drawable/ic_undo_white_48dp"
-            android:id="@+id/btnClose" />
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:background="@color/colourPrimary">
 
-        <android.support.design.widget.FloatingActionButton
-            app:fabSize="mini"
-            android:clickable="true"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="8dp"
-            android:layout_gravity="end|bottom"
-            app:srcCompat="@drawable/ic_done_white_48dp"
-            android:id="@+id/btnSave" />
-
-        <RelativeLayout
-            android:layout_height="140dp"
+        <EditText
+            android:id="@+id/etName"
+            android:layout_height="32dp"
+            android:layout_margin="16dp"
+            android:layout_marginBottom="0dp"
+            android:inputType="textPersonName"
             android:layout_width="match_parent"
-            android:background="@color/coluorPrimary">
+            android:hint="@string/project_name"
+            android:textColor="@color/coluorIcons"
+            android:background="@color/colourPrimary"
+            android:textColorHint="@color/coluorIcons"
+            tools:ignore="LabelFor" />
 
-            <EditText
-                android:id="@+id/etName"
-                android:layout_height="32dp"
-                android:layout_margin="16dp"
-                android:layout_marginBottom="0dp"
-                android:inputType="textPersonName"
-                android:layout_width="match_parent"
-                android:hint="@string/project_name"
-                android:textColor="@color/coluorIcons"
-                android:background="@color/coluorPrimary"
-                android:textColorHint="@color/coluorIcons"
-                tools:ignore="LabelFor" />
-
-            <EditText
-                android:hint="@string/project_author"
-                android:id="@+id/etBy"
-                android:layout_height="32dp"
-                android:inputType="textPersonName"
-                android:layout_width="match_parent"
-                android:textColor="@color/coluorIcons"
-                android:background="@color/coluorPrimary"
-                android:textColorHint="@color/coluorIcons"
-                tools:ignore="RtlHardcoded"
-                android:layout_below="@+id/etName"
-                android:layout_alignLeft="@+id/etName"
-                android:layout_alignStart="@+id/etName"
-                android:layout_alignRight="@+id/etName"
-                android:layout_alignEnd="@+id/etName" />
-        </RelativeLayout>
-    </FrameLayout>
+        <EditText
+            android:hint="@string/project_author"
+            android:id="@+id/etBy"
+            android:layout_height="32dp"
+            android:inputType="textPersonName"
+            android:layout_width="match_parent"
+            android:textColor="@color/coluorIcons"
+            android:background="@color/colourPrimary"
+            android:textColorHint="@color/coluorIcons"
+            tools:ignore="RtlHardcoded"
+            android:layout_below="@+id/etName"
+            android:layout_alignLeft="@+id/etName"
+            android:layout_alignStart="@+id/etName"
+            android:layout_alignRight="@+id/etName"
+            android:layout_alignEnd="@+id/etName" />
+    </RelativeLayout>
 </LinearLayout>
