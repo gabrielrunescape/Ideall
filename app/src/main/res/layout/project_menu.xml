@@ -28,7 +28,8 @@
                 android:id="@+id/txtTitle"
                 android:layout_width="0dp"
                 android:layout_weight="8"
-                android:layout_height="match_parent"
+                android:layout_height="26dp"
+                android:layout_gravity="center"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:textColor="@color/colourListMenuText"
@@ -38,7 +39,8 @@
                 android:id="@+id/txtDate"
                 android:layout_width="0dp"
                 android:layout_weight="2"
-                android:layout_gravity="end"
+                android:gravity="end"
+                android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
                 android:textColor="@color/colourDescMenuText"
@@ -50,7 +52,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="15sp"
-            android:layout_marginTop="6dp"
             android:textColor="@color/colourDescMenuText"
             android:text="02/10/2016"/>
     </LinearLayout>

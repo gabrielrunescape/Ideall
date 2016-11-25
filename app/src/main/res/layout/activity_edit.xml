@@ -22,7 +22,7 @@
             android:layout_marginRight="112dp"
             android:layout_marginBottom="8dp"
             android:layout_gravity="end|bottom"
-            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+            app:srcCompat="@drawable/ic_undo_white_48dp"
             android:id="@+id/btnClose" />
 
         <android.support.design.widget.FloatingActionButton
@@ -33,7 +33,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginBottom="8dp"
             android:layout_gravity="end|bottom"
-            app:srcCompat="@android:drawable/ic_menu_save"
+            app:srcCompat="@drawable/ic_done_white_48dp"
             android:id="@+id/btnSave" />
 
         <RelativeLayout
