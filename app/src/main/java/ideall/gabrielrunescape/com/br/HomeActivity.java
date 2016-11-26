@@ -1,4 +1,4 @@
-package ideall.gabrielrunescape.com.br.view;
+package ideall.gabrielrunescape.com.br;
 
 import java.util.List;
 
@@ -15,6 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import ideall.gabrielrunescape.com.br.DAO.ProjectDAO;
 import ideall.gabrielrunescape.com.br.models.ProjectAdapter;
 import ideall.gabrielrunescape.com.br.objects.Project;
+import ideall.gabrielrunescape.com.br.view.EditActivity;
+
 import android.support.design.widget.FloatingActionButton;
 
 /**
@@ -50,9 +52,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent itent = new Intent(getApplicationContext(), EditActivity.class);
-
                 startActivity(itent);
-                finish();
             }
         });
 
@@ -70,7 +70,6 @@ public class HomeActivity extends AppCompatActivity {
                 intent.putExtra("Project", p);
 
                 startActivity(intent);
-                finish();
             }
         });
     }

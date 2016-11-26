@@ -7,4 +7,16 @@
         <item name="android:colorButtonNormal">@color/colourAccent</item>
         <item name="android:textColorPrimary">@android:color/white</item>
     </style>
+
+    <style name="EditTextApp" parent="Base.Widget.AppCompat.EditText">
+        <item name="android:padding">8dp</item>
+        <item name="android:inputType">text</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colourPrimary</item>
+        <item name="android:background">@android:color/white</item>
+        <item name="android:textColorHint">@color/colourPrimary</item>
+    </style>
 </resources>

@@ -16,38 +16,45 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"/>
 
-    <RelativeLayout
-        android:layout_height="wrap_content"
+    <ScrollView
         android:layout_width="match_parent"
-        android:background="@color/colourPrimary">
+        android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/etName"
-            android:layout_height="32dp"
-            android:layout_margin="16dp"
-            android:layout_marginBottom="0dp"
-            android:inputType="textPersonName"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:hint="@string/project_name"
-            android:textColor="@color/coluorIcons"
-            android:background="@color/colourPrimary"
-            android:textColorHint="@color/coluorIcons"
-            tools:ignore="LabelFor" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-        <EditText
-            android:hint="@string/project_author"
-            android:id="@+id/etBy"
-            android:layout_height="32dp"
-            android:inputType="textPersonName"
-            android:layout_width="match_parent"
-            android:textColor="@color/coluorIcons"
-            android:background="@color/colourPrimary"
-            android:textColorHint="@color/coluorIcons"
-            tools:ignore="RtlHardcoded"
-            android:layout_below="@+id/etName"
-            android:layout_alignLeft="@+id/etName"
-            android:layout_alignStart="@+id/etName"
-            android:layout_alignRight="@+id/etName"
-            android:layout_alignEnd="@+id/etName" />
-    </RelativeLayout>
+            <EditText
+                android:id="@+id/etName"
+                style="@style/EditTextApp"
+                android:layout_width="match_parent"
+                android:hint="@string/project_name"
+                tools:ignore="LabelFor">
+            </EditText>
+
+            <EditText
+                android:id="@+id/etBy"
+                style="@style/EditTextApp"
+                android:layout_width="match_parent"
+                android:hint="@string/project_author"
+                tools:ignore="LabelFor"/>
+
+            <EditText
+                android:id="@+id/etDate"
+                style="@style/EditTextApp"
+                android:inputType="datetime"
+                android:hint="Selecione a data de prazo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/button2"
+                android:textSize="22sp"
+                android:layout_gravity="end|bottom"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/button_delete" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

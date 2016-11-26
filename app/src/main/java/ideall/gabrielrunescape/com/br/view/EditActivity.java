@@ -9,6 +9,7 @@ import android.widget.EditText;
 import ideall.gabrielrunescape.com.br.R;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.app.AppCompatActivity;
+import ideall.gabrielrunescape.com.br.HomeActivity;
 import ideall.gabrielrunescape.com.br.DAO.ProjectDAO;
 import ideall.gabrielrunescape.com.br.objects.Project;
 
@@ -26,6 +27,9 @@ public class EditActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_edit);
         setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         project = new ProjectDAO(this);
         project.open();
@@ -52,28 +56,23 @@ public class EditActivity extends AppCompatActivity {
         project.close();
         super.onPause();
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_edit, menu);
+        return true;
+    }
 
-        undo = menu.findItem(R.id.item_undo);
-        done = menu.findItem(R.id.item_done);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent = null;
+        int id = item.getItemId();
 
-        undo.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-
-                startActivity(intent);
-                finish();
-
-                return true;
-            }
-        });
-
-        done.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
+        switch (id) {
+            case R.id.item_undo:
+                intent = new Intent(getApplicationContext(), HomeActivity.class);
+                break;
+            case R.id.item_done:
                 String n = etName.getText().toString();
                 String b = etBy.getText().toString();
 
@@ -93,16 +92,16 @@ public class EditActivity extends AppCompatActivity {
                         project.update(p);
                     }
 
-                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-
-                    startActivity(intent);
-                    finish();
-
-                    return true;
+                    intent = new Intent(getApplicationContext(), HomeActivity.class);
                 }
-            }
-        });
+                break;
+        }
 
-        return true;
+        if (intent != null) {
+            startActivity(intent);
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
