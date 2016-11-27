@@ -10,18 +10,28 @@ import android.database.sqlite.SQLiteOpenHelper;
  *      Classe para controlar o fluxo de infomrações entre o banco de dados e a aplicação.
  */
 public class CustomSQLiteOpenHelper extends SQLiteOpenHelper {
-    public static final String TABLE = "Project";
-    public static final String COLUNM_ID = "ID";
-    public static final String COLUMN_NAME = "Name";
-    public static final String COLUMN_AUTHOR = "Author";
-
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
     public static final String DATABASE = "ideall.sdb";
 
-    private static final String CREATE = "CREATE TABLE " + TABLE +  " ( " +
-            COLUNM_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
-            COLUMN_NAME + " VARCHAR(32) NOT NULL, " +
-            COLUMN_AUTHOR + " VARCHAR(16) NOT NULL);";
+    private static final String CREATE_PROJECT = "CREATE TABLE IF NOT EXISTS Project (\n" +
+            "  ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,\n" +
+            "  Name VARCHAR(32) NOT NULL,\n" +
+            "  Author INTEGER NOT NULL,\n" +
+            "  Description TEXT NULL,\n" +
+            "  Created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,\n" +
+            "  CONSTRAINT fk_Project_Contacts\n" +
+            "    FOREIGN KEY (Author)\n" +
+            "    REFERENCES Contact (ID)\n" +
+            "    ON DELETE CASCADE\n" +
+            "    ON UPDATE CASCADE\n" +
+            ");\n";
+
+    private static final String CREATE_CONTACT = "CREATE TABLE IF NOT EXISTS Contact (\n" +
+            "  ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,\n" +
+            "  Name VARCHAR(16) NOT NULL,\n" +
+            "  Email VARCHAR(32) NULL,\n" +
+            "  Created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP\n" +
+            ");";
 
     /**
      * Create a helper object to create, open, and/or manage a database.
@@ -43,7 +53,8 @@ public class CustomSQLiteOpenHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(CREATE);
+        db.execSQL(CREATE_CONTACT);
+        db.execSQL(CREATE_PROJECT);
     }
 
     /**
@@ -68,7 +79,8 @@ public class CustomSQLiteOpenHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE);
+        db.execSQL("DROP TABLE IF EXISTS Project;");
+        db.execSQL("DROP TABLE IF EXISTS Contact;");
         onCreate(db);
     }
 }

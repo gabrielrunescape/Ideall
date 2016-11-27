@@ -3,6 +3,7 @@
 
     <!-- menu_main.xml -->
     <string name="toolbar_more">Mais</string>
+    <string name="toolbar_add">Adicionar</string>
     <string name="toolbar_conf">Preferências</string>
 
     <!-- activity_edit.xml -->
@@ -10,4 +11,9 @@
     <string name="new_project">Novo projeto</string>
     <string name="project_author">Feito por</string>
     <string name="project_name">Nome do projeto</string>
+
+    <!-- activity_contact.xml -->
+    <string name="contact_name">Nome</string>
+    <string name="contact_email">E-mail</string>
+    <string name="new_contact">Novo contato</string>
 </resources>

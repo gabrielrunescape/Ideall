@@ -24,7 +24,7 @@ public class ProjectAdapter extends ArrayAdapter<Project> {
         View itemView = convertView;
 
         if (itemView == null) {
-            itemView = LayoutInflater.from(getContext()).inflate(R.layout.project_menu, parent, false);
+            itemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_project, parent, false);
         }
 
         Project project = getItem(position);

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context="ideall.gabrielrunescape.com.br.view.ContactActivity"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:id="@+id/activity_contact"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="?attr/actionBarTheme"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"/>
+
+    <EditText
+        android:id="@+id/etName"
+        style="@style/EditTextApp"
+        android:layout_width="match_parent"
+        android:hint="@string/contact_name"
+        tools:ignore="LabelFor">
+    </EditText>
+
+    <EditText
+        android:id="@+id/etEmail"
+        style="@style/EditTextApp"
+        android:layout_width="match_parent"
+        android:hint="@string/contact_email"
+        android:inputType="textEmailAddress"
+        tools:ignore="LabelFor"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:textSize="22sp"
+            android:id="@+id/btnDelete"
+            android:layout_height="64dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_gravity="end|bottom"
+            android:layout_width="match_parent"
+            android:text="@string/button_delete" />
+    </FrameLayout>
+</LinearLayout>

@@ -19,7 +19,7 @@ import ideall.gabrielrunescape.com.br.controller.CustomSQLiteOpenHelper;
 public class ProjectDAO {
     private SQLiteDatabase database;
     private CustomSQLiteOpenHelper sqLiteOpenHelper;
-    private String[] columns = { CustomSQLiteOpenHelper.COLUNM_ID, CustomSQLiteOpenHelper.COLUMN_NAME, CustomSQLiteOpenHelper.COLUMN_AUTHOR };
+    private String[] columns = { "ID", "Name", "Author" };
 
     public ProjectDAO(Context context) {
         sqLiteOpenHelper = new CustomSQLiteOpenHelper(context);
@@ -35,12 +35,12 @@ public class ProjectDAO {
 
     public Project create(Project proj) {
         ContentValues values = new ContentValues();
-        values.put(CustomSQLiteOpenHelper.COLUMN_NAME, proj.getName());
-        values.put(CustomSQLiteOpenHelper.COLUMN_AUTHOR, proj.getAuthor());
+        values.put("Name", proj.getName());
+        values.put("Author", proj.getAuthor());
 
-        long id = database.insert(CustomSQLiteOpenHelper.TABLE, null, values);
+        long id = database.insert("Project", null, values);
 
-        Cursor cursor = database.query(CustomSQLiteOpenHelper.TABLE, columns, CustomSQLiteOpenHelper.COLUNM_ID + " = " + id, null, null, null, null);
+        Cursor cursor = database.query("Project", columns, "ID = " + id, null, null, null, null);
         cursor.moveToFirst();
 
         Project project = new Project();
@@ -57,22 +57,22 @@ public class ProjectDAO {
         long id = proj.getID();
 
         ContentValues values = new ContentValues();
-        values.put(CustomSQLiteOpenHelper.COLUMN_NAME, proj.getName());
-        values.put(CustomSQLiteOpenHelper.COLUMN_AUTHOR, proj.getAuthor());
+        values.put("Name", proj.getName());
+        values.put("Author", proj.getAuthor());
 
-        database.update(CustomSQLiteOpenHelper.TABLE, values, CustomSQLiteOpenHelper.COLUNM_ID + " = " + id, null);
+        database.update("Project", values, "ID = " + id, null);
     }
 
     public void delete(Project proj) {
         long id = proj.getID();
 
-        database.delete(CustomSQLiteOpenHelper.TABLE, CustomSQLiteOpenHelper.COLUNM_ID + " = " + id, null);
+        database.delete("Project", "ID = " + id, null);
     }
 
     public List<Project> getAll() {
         List<Project> projects = new ArrayList<Project>();
 
-        Cursor cursor = database.query(CustomSQLiteOpenHelper.TABLE, columns, null, null, null, null, null);
+        Cursor cursor = database.query("Project", columns, null, null, null, null, null);
         cursor.moveToFirst();
 
         while (!cursor.isAfterLast()) {

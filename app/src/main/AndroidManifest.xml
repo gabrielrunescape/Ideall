@@ -15,9 +15,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.EditActivity"
+        <activity
+            android:name=".view.EditActivity"
             android:label="@string/new_project"
             android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".view.ContactActivity"
+            android:label="@string/new_contact"
+            android:parentActivityName=".view.ShowAllActivity" />
+        <activity
+            android:name=".view.ShowAllActivity"
+            android:label="@string/new_contact"
+            android:parentActivityName=".view.EditActivity"/>
     </application>
 
 </manifest>

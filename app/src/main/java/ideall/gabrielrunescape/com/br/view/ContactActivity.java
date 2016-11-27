@@ -2,7 +2,6 @@ package ideall.gabrielrunescape.com.br.view;
 
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
 import android.widget.Toast;
 import android.view.MenuItem;
 import android.content.Intent;
@@ -10,19 +9,18 @@ import android.widget.EditText;
 import ideall.gabrielrunescape.com.br.R;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.app.AppCompatActivity;
-import ideall.gabrielrunescape.com.br.objects.*;
-import ideall.gabrielrunescape.com.br.HomeActivity;
-import ideall.gabrielrunescape.com.br.DAO.ProjectDAO;
+import ideall.gabrielrunescape.com.br.DAO.ContactDAO;
+import ideall.gabrielrunescape.com.br.objects.Contact;
 
-public class EditActivity extends AppCompatActivity {
-    private EditText etBy;
+public class ContactActivity extends AppCompatActivity {
     private EditText etName;
-    private ProjectDAO project;
+    private EditText etEmail;
+    private ContactDAO contact;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit);
+        setContentView(R.layout.activity_contact);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_edit);
         setSupportActionBar(toolbar);
@@ -30,41 +28,29 @@ public class EditActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        project = new ProjectDAO(this);
-        project.open();
+        contact = new ContactDAO(this);
+        contact.open();
     }
 
     @Override
     protected void onResume() {
-        project.open();
+        contact.open();
         super.onResume();
 
-        etBy = (EditText) findViewById(R.id.etBy);
         etName = (EditText) findViewById(R.id.etName);
-
-        if (getIntent().getSerializableExtra("Project") != null) {
-            Project p = (Project) getIntent().getSerializableExtra("Project");
-
-            etBy.setText(p.getAuthor());
-            etName.setText(p.getName());
-        }
+        etEmail = (EditText) findViewById(R.id.etEmail);
 
         if (getIntent().getSerializableExtra("Contact") != null) {
-            etBy.setText(((Contact) getIntent().getSerializableExtra("Contact")).getID() + "");
-        }
+            Contact c = (Contact) getIntent().getSerializableExtra("Contact");
 
-        etBy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ShowAllActivity.class);
-                startActivity(intent);
-            }
-        });
+            etName.setText(c.getName());
+            etEmail.setText(c.getEmail());
+        }
     }
 
     @Override
     protected void onPause() {
-        project.close();
+        contact.close();
         super.onPause();
     }
 
@@ -81,29 +67,29 @@ public class EditActivity extends AppCompatActivity {
 
         switch (id) {
             case R.id.item_undo:
-                intent = new Intent(getApplicationContext(), HomeActivity.class);
+                intent = new Intent(getApplicationContext(), ShowAllActivity.class);
                 break;
             case R.id.item_done:
                 String n = etName.getText().toString();
-                String b = etBy.getText().toString();
+                String b = etEmail.getText().toString();
 
                 if (n.isEmpty() || b.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Existem campos vazios!", Toast.LENGTH_SHORT).show();
 
                     return false;
                 } else {
-                    Project p = new Project();
-                    p.setName(n);
-                    p.setAuthor(b);
+                    Contact c = new Contact();
+                    c.setName(n);
+                    c.setEmail(b);
 
-                    if (getIntent().getSerializableExtra("Project") == null) {
-                        project.create(p);
+                    if (getIntent().getSerializableExtra("Contact") == null) {
+                        contact.create(c);
                     } else {
-                        p.setID(((Project) getIntent().getSerializableExtra("Project")).getID());
-                        project.update(p);
+                        c.setID(((Contact) getIntent().getSerializableExtra("Contact")).getID());
+                        contact.update(c);
                     }
 
-                    intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    intent = new Intent(getApplicationContext(), ShowAllActivity.class);
                 }
                 break;
         }
